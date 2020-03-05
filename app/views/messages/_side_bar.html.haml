@@ -1,0 +1,17 @@
+.sideBar
+
+  .sideBar__top
+    %p.sideBar__top__name
+      Takahito
+    .sideBar__top__btn
+      = link_to "#" do
+        = icon('fa', 'edit')
+      = link_to "#" do
+        = icon('fa', 'cog')
+
+  .sideBar__content
+    .sideBar__content__group
+      %p.sideBar__content__group__name
+        グループ名
+      %p.sideBar__content__group__newMessage
+        新着メッセージ
