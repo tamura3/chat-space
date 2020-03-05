@@ -1,0 +1,42 @@
+.mainChat
+
+  .mainChat__top
+    .mainChat__top__left
+      %p.mainChat__top__left__groupName
+        グループ1
+      %p.mainChat__top__left__memberName
+        Member : メンバー1 メンバー2
+
+    = link_to "Edit", "#", class: "mainChat__top__editBtn"
+
+  %ul.mainChat__content
+    %li.mainChat__content__message
+      .mainChat__content__message__upper
+        %p.mainChat__content__message__upper__user
+          Takahito
+        %p.mainChat__content__message__upper__date
+          2019/02/01(Sat) 22:09:12
+      %p.mainChat__content__Message__text
+        こんにちは
+
+    %li.mainChat__content__message
+      .mainChat__content__message__upper
+        %p.mainChat__content__message__upper__user
+          Masato
+        %p.mainChat__content__message__upper__date
+          2019/01/01(Sat) 12:09:12
+      %p.mainChat__content__message__text
+        おはよう
+
+  %form.mainChat__bottom
+    .mainChat__bottom__inputBox
+      %input{type: "text", class: "mainChat__bottom__inputBox__text", placeholder: "type a message"}
+      %label{class: "mainChat__bottom__inputBox__file"}
+        = icon("fas", "image")
+        %input{type: "file", class: "mainChat__bottom__inputBox__fileBtn"}
+    %input{type: "submit", class: "mainChat__bottom__submitBtn", value: "Send"}
+
+
+
+
+    
