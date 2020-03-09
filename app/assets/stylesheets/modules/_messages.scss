@@ -50,12 +50,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-
     &__name{
       font-size: 16px;
       font-weight: bold;
     }
-
   }
   &__content {
     background-color: #2f3e51;
@@ -71,14 +69,11 @@
         font-size: 11px;
       }
     }
-
   }
-
 }
 
 .mainChat {
   width: calc(100% - #{$side-width});
-
   &__top {
     height: $top-height;
     display: flex;
@@ -114,11 +109,9 @@
     height: calc(100vh - #{$top-height} - #{$bottom-height});
     padding: 46px 40px;
     overflow: scroll;
-
     &::-webkit-scrollbar {
       display:none;
     }
-
     &__message{
       margin-bottom: 46px;
       &__upper{
@@ -142,7 +135,6 @@
       }
     }
   }
-
   &__bottom {
     background-color: #d2d2d2;
     height: $bottom-height;
@@ -179,7 +171,6 @@
       cursor: pointer;
     }
   }
-
 }
 
 
