@@ -2,12 +2,13 @@
 
   .sideBar__top
     %p.sideBar__top__name
-      Takahito
+      = current_user.name
     .sideBar__top__btn
       = link_to "#" do
         = icon('fa', 'edit')
       = link_to "#" do
-        = icon('fa', 'cog')
+        = link_to edit_user_path(current_user) do
+          = icon('fas', 'cog', class: 'icon')
 
   .sideBar__content
     .sideBar__content__group
