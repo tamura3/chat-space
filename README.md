@@ -75,7 +75,7 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
-## messageテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
