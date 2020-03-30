@@ -1,0 +1,7 @@
+-# new.html.hamlと全く同じ
+-# 変更したいグループ名・ユーザー名は勝手に表示してくれる
+
+= form_for @group do |f|
+  = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
+  = f.collection_check_boxes :user_ids, User.all, :id, :name
+  = f.submit "Save", class: "chat-group-form__action-btn"

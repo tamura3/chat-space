@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
 
   def create
     #グループ作成時 フォームからの送信されるデータを確認しておく
-    #binding.pry
+    # binding.pry
 
     @group = Group.new(group_params)
     if @group.save
@@ -20,6 +20,20 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    # binding.pry
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to root_path, notice: 'グループを更新しました'
+    else
+      #newページの表示。リダイレクトすると変数が消えてしまう
+      render :new
+    end
+  end
 
   private
   def group_params
