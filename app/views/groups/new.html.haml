@@ -1,4 +1,7 @@
-=form_for @group do |f|
-  = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
-  = f.collection_check_boxes :user_ids, User.all, :id, :name
-  = f.submit "Save", class: "chat-group-form__action-btn"
+.chat-group-form
+  %h1 新規チャットグループ
+  = render partial: 'form', locals: { group: @group }
+
+  -# partial  部分テンプレート _form.html.hamlを呼び出す
+  -# locals   部分テンプレート内で変数が使える
+  
