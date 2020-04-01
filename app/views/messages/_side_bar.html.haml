@@ -4,13 +4,17 @@
     %p.sideBar__top__name
       = current_user.name
     .sideBar__top__btn
-      = link_to "#" do
+      = link_to new_group_path do
         = icon('fa', 'edit')
       = link_to edit_user_path(current_user) do
         = icon('fas', 'cog', class: 'icon')
   .sideBar__content
-    .sideBar__content__group
-      %p.sideBar__content__group__name
-        グループ名
-      %p.sideBar__content__group__newMessage
-        新着メッセージ
+    -# ログイン中のユーザが属するグループのみ表示
+    - current_user.groups.each do |group|
+      .sideBar__content__group
+        %p.sideBar__content__group__name
+          = group.name
+        %p.sideBar__content__group__newMessage
+          -# = group.message
+          新着メッセージ
+
