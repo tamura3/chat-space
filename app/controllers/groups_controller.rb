@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  def index
+    # 空の場合はindex自体作らなくても大丈夫
+  end
 
   def new
     #空のインスタンスを作成
