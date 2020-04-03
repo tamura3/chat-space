@@ -5,4 +5,5 @@ class Message < ApplicationRecord
   # presence: 空の場合は保存しない
   # unless: ~でければ
   # imageが空で、contentも空ならば保存しない
+   mount_uploader :image, ImageUploader
 end
