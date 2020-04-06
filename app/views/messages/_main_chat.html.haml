@@ -3,40 +3,51 @@
   .mainChat__top
     .mainChat__top__left
       %p.mainChat__top__left__groupName
-        グループ1
+        = @group.name
+        -# @group = Group.find(params[:group_id])なので、
+        -# URL (http://192.168.1.23:3000/groups/1/messages) からグループ名を取得
       %p.mainChat__top__left__memberName
-        Member : メンバー1 メンバー2
+        Member : 
+        - @group.users.each do |user|
+          = user.name
 
-    = link_to "Edit", "#", class: "mainChat__top__editBtn"
+    = link_to "Edit", edit_group_path(@group), class: "mainChat__top__editBtn"
 
+
+  -# メッセージの表示部分
   %ul.mainChat__content
-    %li.mainChat__content__message
-      .mainChat__content__message__upper
-        %p.mainChat__content__message__upper__user
-          Takahito
-        %p.mainChat__content__message__upper__date
-          2019/02/01(Sat) 22:09:12
-      %p.mainChat__content__Message__text
-        こんにちは
+    -# ulは繰り返す必要ない
+    = render @messages
+    -# 下記のどちらかとも同じ
+    -# https://master.tech-camp.in/curriculums/2738
+    -# インスタンス変数名の単数形と、部分テンプレート前が同じなら省略できる
+    -# 読み込みが1回なのでeachより速い
 
-    %li.mainChat__content__message
-      .mainChat__content__message__upper
-        %p.mainChat__content__message__upper__user
-          Masato
-        %p.mainChat__content__message__upper__date
-          2019/01/01(Sat) 12:09:12
-      %p.mainChat__content__message__text
-        おはよう
+    -# = render partial: 'message', collection: @messages
 
-  %form.mainChat__bottom
+    -# - @messages.each do |message|
+    -#   = render partial: "message", locals: { message: message }
+    -# hamlのコメントにインデントは使えない (行頭から書かないといけない)
+
+
+  = form_for [@group, @message], html: {class: "mainChat__bottom"}  do |f|
+    -# ルーティングでネストしているから、 (どのグループのメッセージなのか)
+    -# 送信先に@group, @messageの療法を記載
     .mainChat__bottom__inputBox
-      %input{type: "text", class: "mainChat__bottom__inputBox__text", placeholder: "type a message"}
-      %label{class: "mainChat__bottom__inputBox__file"}
-        = icon("fas", "image")
-        %input{type: "file", class: "mainChat__bottom__inputBox__fileBtn"}
-    %input{type: "submit", class: "mainChat__bottom__submitBtn", value: "Send"}
-
-
-
-
+      = f.text_field :content, class: 'mainChat__bottom__inputBox__text', placeholder: 'type a message'
+      = f.label :image, class: 'mainChat__bottom__inputBox__file' do
+        = icon('fas', 'image', class: 'mainChat__bottom__inputBox__file')
+        = f.file_field :image, class: 'mainChat__bottom__inputBox__fileBtn'
     
+    = f.submit 'Send', class: 'mainChat__bottom__submitBtn'
+
+
+  -# 初めに自分で書いたコード
+  -# %form.mainChat__bottom
+  -#   .mainChat__bottom__inputBox
+  -#     %input{type: "text", class: "mainChat__bottom__inputBox__text", placeholder: "type a message"}
+  -#     %label{class: "mainChat__bottom__inputBox__file"}
+  -#       = icon("fas", "image")
+  -#       %input{type: "file", class: "mainChat__bottom__inputBox__fileBtn"}
+  -#   %input{type: "submit", class: "mainChat__bottom__submitBtn", value: "Send"}
+
