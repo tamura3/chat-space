@@ -11,7 +11,7 @@
         - @group.users.each do |user|
           = user.name
 
-    = link_to "Edit", "#", class: "mainChat__top__editBtn"
+    = link_to "Edit", edit_group_path(@group), class: "mainChat__top__editBtn"
 
 
   -# メッセージの表示部分
