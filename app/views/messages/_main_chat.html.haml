@@ -28,15 +28,26 @@
       %p.mainChat__content__message__text
         おはよう
 
-  %form.mainChat__bottom
+
+
+  = form_for [@group, @message], html: {class: "mainChat__bottom"}  do |f|
+    -# ルーティングでネストしているから、 (どのグループのメッセージなのか)
+    -# 送信先に@group, @messageの療法を記載
     .mainChat__bottom__inputBox
-      %input{type: "text", class: "mainChat__bottom__inputBox__text", placeholder: "type a message"}
-      %label{class: "mainChat__bottom__inputBox__file"}
-        = icon("fas", "image")
-        %input{type: "file", class: "mainChat__bottom__inputBox__fileBtn"}
-    %input{type: "submit", class: "mainChat__bottom__submitBtn", value: "Send"}
-
-
-
-
+      = f.text_field :content, class: 'mainChat__bottom__inputBox__text', placeholder: 'type a message'
+      = f.label :image, class: 'mainChat__bottom__inputBox__file' do
+        = icon('fas', 'image', class: 'mainChat__bottom__inputBox__file')
+        = f.file_field :image, class: 'mainChat__bottom__inputBox__fileBtn'
     
+    = f.submit 'Send', class: 'mainChat__bottom__submitBtn'
+
+
+  -# 初めに自分で書いたコード
+  -# %form.mainChat__bottom
+  -#   .mainChat__bottom__inputBox
+  -#     %input{type: "text", class: "mainChat__bottom__inputBox__text", placeholder: "type a message"}
+  -#     %label{class: "mainChat__bottom__inputBox__file"}
+  -#       = icon("fas", "image")
+  -#       %input{type: "file", class: "mainChat__bottom__inputBox__fileBtn"}
+  -#   %input{type: "submit", class: "mainChat__bottom__submitBtn", value: "Send"}
+
