@@ -15,17 +15,19 @@
 
 
   -# メッセージの表示部分
-  = render @messages
-  -# 下記のどちらかとも同じ
-  -# https://master.tech-camp.in/curriculums/2738
-  -# インスタンス変数名の単数形と、部分テンプレート前が同じなら省略できる
-  -# 読み込みが1回なのでeachより速い
+  %ul.mainChat__content
+    -# ulは繰り返す必要ない
+    = render @messages
+    -# 下記のどちらかとも同じ
+    -# https://master.tech-camp.in/curriculums/2738
+    -# インスタンス変数名の単数形と、部分テンプレート前が同じなら省略できる
+    -# 読み込みが1回なのでeachより速い
 
-  -# = render partial: 'message', collection: @messages
+    -# = render partial: 'message', collection: @messages
 
-  -# - @messages.each do |message|
-  -#   = render partial: "message", locals: { message: message }
-  -# hamlのコメントにインデントは使えない (行頭から書かないといけない)
+    -# - @messages.each do |message|
+    -#   = render partial: "message", locals: { message: message }
+    -# hamlのコメントにインデントは使えない (行頭から書かないといけない)
 
 
   = form_for [@group, @message], html: {class: "mainChat__bottom"}  do |f|
