@@ -9,25 +9,19 @@
 
     = link_to "Edit", "#", class: "mainChat__top__editBtn"
 
-  %ul.mainChat__content
-    %li.mainChat__content__message
-      .mainChat__content__message__upper
-        %p.mainChat__content__message__upper__user
-          Takahito
-        %p.mainChat__content__message__upper__date
-          2019/02/01(Sat) 22:09:12
-      %p.mainChat__content__Message__text
-        こんにちは
 
-    %li.mainChat__content__message
-      .mainChat__content__message__upper
-        %p.mainChat__content__message__upper__user
-          Masato
-        %p.mainChat__content__message__upper__date
-          2019/01/01(Sat) 12:09:12
-      %p.mainChat__content__message__text
-        おはよう
+  -# メッセージの表示部分
+  = render @messages
+  -# 下記のどちらかとも同じ
+  -# https://master.tech-camp.in/curriculums/2738
+  -# インスタンス変数名の単数形と、部分テンプレート前が同じなら省略できる
+  -# 読み込みが1回なのでeachより速い
 
+  -# = render partial: 'message', collection: @messages
+
+  -# - @messages.each do |message|
+  -#   = render partial: "message", locals: { message: message }
+  -# hamlのコメントにインデントは使えない (行頭から書かないといけない)
 
 
   = form_for [@group, @message], html: {class: "mainChat__bottom"}  do |f|
