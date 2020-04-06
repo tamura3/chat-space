@@ -3,9 +3,13 @@
   .mainChat__top
     .mainChat__top__left
       %p.mainChat__top__left__groupName
-        グループ1
+        = @group.name
+        -# @group = Group.find(params[:group_id])なので、
+        -# URL (http://192.168.1.23:3000/groups/1/messages) からグループ名を取得
       %p.mainChat__top__left__memberName
-        Member : メンバー1 メンバー2
+        Member : 
+        - @group.users.each do |user|
+          = user.name
 
     = link_to "Edit", "#", class: "mainChat__top__editBtn"
 
