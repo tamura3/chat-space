@@ -1,6 +1,6 @@
-// turbolinksが削除出来ていることの確認
-// ブラウザのconsoleにエラーが何も出なければOK
-
 $(function(){
+  $('#new_message').on('submit', function(e){
+    console.log('hoge');
+    e.preventDefault()
+  });
 });
-
