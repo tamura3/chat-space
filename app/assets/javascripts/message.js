@@ -89,6 +89,8 @@ $(function(){
     });
   };
 
-  // 秒数毎に関数を読み込む
-  setInterval(reloadMessages, 7000);
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    // 秒数毎に関数を読み込む
+    setInterval(reloadMessages, 7000);
+  }
 });
