@@ -52,6 +52,7 @@ $('#new_message').on('submit', function(e){
       $('.mainChat__content').append(html);
       $('.mainChat__content').animate({ scrollTop: $('.mainChat__content')[0].scrollHeight});
       $('form')[0].reset();
+      $(".mainChat__bottom__submitBtn").prop("disabled", false);
     })
-})
+  })
 });
