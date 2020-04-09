@@ -1,41 +1,37 @@
 $(function(){ 
-     function buildHTML(message){
+    function buildHTML(message){
       if ( message.image ) {
         var html =
-         `<div class="message">
-            <div class="upper-message">
-              <div class="upper-message__user-name">
+          `<li class="mainChat__content__message">
+            <div class="mainChat__content__message__upper">
+              <p class="mainChat__content__message__upper__user">
                 ${message.user_name}
-              </div>
-              <div class="upper-message__date">
+              </p>
+              <p class="mainChat__content__message__upper__date">
                 ${message.created_at}
-              </div>
-            </div>
-            <div class="lower-message">
-              <p class="lower-message__content">
-                ${message.content}
               </p>
             </div>
+            <p class="mainChat__content__message__text">
+              ${message.content}
+            </p>
             <img src=${message.image} >
-          </div>`
+          </li>`
         return html;
       } else {
         var html =
-         `<div class="message">
-            <div class="upper-message">
-              <div class="upper-message__user-name">
+          `<li class="mainChat__content__message">
+            <div class="mainChat__content__message__upper">
+              <p class="mainChat__content__message__upper__user">
                 ${message.user_name}
-              </div>
-              <div class="upper-message__date">
+              </p>
+              <p class="mainChat__content__message__upper__date">
                 ${message.created_at}
-              </div>
-            </div>
-            <div class="lower-message">
-              <p class="lower-message__content">
-                ${message.content}
               </p>
             </div>
-          </div>`
+            <p class="mainChat__content__message__text">
+              ${message.content}
+            </p>
+          </li>`
         return html;
       };
     }
@@ -51,8 +47,10 @@ $('#new_message').on('submit', function(e){
       processData: false,
       contentType: false
     })
-     .done(function(data){
-       var html = buildHTML(data);
-     })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.mainChat__content').append(html);
+      $('form')[0].reset();
+    })
 })
 });
