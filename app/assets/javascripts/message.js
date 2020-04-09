@@ -85,5 +85,7 @@ $(function(){
       alert('error');
     });
   };
-  
+
+  // 秒数毎に関数を読み込む
+  setInterval(reloadMessages, 7000);
 });
