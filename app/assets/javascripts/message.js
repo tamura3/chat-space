@@ -50,6 +50,7 @@ $('#new_message').on('submit', function(e){
     .done(function(data){
       var html = buildHTML(data);
       $('.mainChat__content').append(html);
+      $('.mainChat__content').animate({ scrollTop: $('.mainChat__content')[0].scrollHeight});
       $('form')[0].reset();
     })
 })
