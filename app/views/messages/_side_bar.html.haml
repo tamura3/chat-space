@@ -12,9 +12,9 @@
     -# ログイン中のユーザが属するグループのみ表示
     - current_user.groups.each do |group|
       .sideBar__content__group
-        %p.sideBar__content__group__name
-          = group.name
-        %p.sideBar__content__group__newMessage
-          -# = group.message
-          新着メッセージ
+        = link_to group_messages_path(group) do
+          %p.sideBar__content__group__name
+            = group.name
+          %p.sideBar__content__group__newMessage
+            = group.show_last_message
 
