@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
     provider: 'AWS',
     aws_access_key_id: Rails.application.secrets.aws_access_key_id,
     aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
-    region: 'ap-northeast-1'
+    region: 'us-east-2'
   }
 
   config.fog_directory  = 'chat-space-ohio'
