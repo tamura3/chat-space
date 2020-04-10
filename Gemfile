@@ -53,6 +53,12 @@ group :development, :test do
 
   gem 'faker'
   # ダミーデータを作成する
+
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
